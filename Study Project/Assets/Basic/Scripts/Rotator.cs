@@ -33,6 +33,7 @@ public class Rotator : MonoBehaviour {
         while (diff <= roteteTime) 
         {
             transform.eulerAngles = firstEulerAngles +  new Vector3(360*(diff/roteteTime),0,0);
+            //ここで中断、1F待つ
             yield return null;
             diff = Time.timeSinceLevelLoad - startTime;
         }
