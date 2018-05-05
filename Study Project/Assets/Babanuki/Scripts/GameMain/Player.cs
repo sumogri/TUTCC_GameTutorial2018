@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class Player{
     public List<Card> HavingCards { get; private set; } = new List<Card>();
-
+    public string Name { get; set; }
+    
     /// <summary>
     /// 数字一致のカードを捨てる
     /// </summary>
@@ -42,7 +43,8 @@ public class Player{
         drewList.RemoveAt(0);
 
         HavingCards.Add(c);
-        yield return null;
+
+        yield return new WaitForSeconds(1f);
     }
 
     /// <summary>
@@ -51,6 +53,7 @@ public class Player{
     public IEnumerator SoteCardsCoroutine()
     {
         HavingCards = HavingCards.OrderBy(x => Guid.NewGuid()).ToList();
-        yield return null;
+
+        yield return new WaitForSeconds(1f);
     }
 }

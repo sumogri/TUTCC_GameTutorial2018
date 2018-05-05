@@ -633,7 +633,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: 79758469-39e0-41dd-b37e-e27f7385a924
   projectName: Study Project
   organizationId: kazushi-sakashita

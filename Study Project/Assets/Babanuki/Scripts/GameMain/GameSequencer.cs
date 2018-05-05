@@ -15,15 +15,18 @@ public class GameSequencer : MonoBehaviour {
         for (int i = 0; i < 4; i++)
             players.Add(new Player());
 
+        players[0].Name = "一色";
+        players[1].Name = "二葉";
+        players[2].Name = "三条";
+        players[3].Name = "四宮";
+
         StartCoroutine(GameCoroutine());
 	}
 	
     private IEnumerator GameCoroutine()
     {
         //席順 == listの格納順
-        //最初に"引く"手番のプレイヤーを決める
-        int turnPlayerIndex = Random.Range(0,players.Count-1);
-        Player turnPlayer = players[turnPlayerIndex];
+        int turnPlayerIndex = 0;
 
         //カード配布
         Card[] cards = CardFactory.GenerateDeck();
@@ -38,15 +41,14 @@ public class GameSequencer : MonoBehaviour {
         //初期手札をすべて捨てられたら、それはあがり
         players.RemoveAll(x => !x.HavingCards.Any());
 
+        Player turnPlayer = players[turnPlayerIndex];
+
         //メインルーチン
         while (players.Count > 1)
         {
-            //引くはずのプレイヤーがあがっている
-            if(turnPlayer != players[turnPlayerIndex])
-            {
-                turnPlayer = players[turnPlayerIndex];
-            }
             Player drewPlayer = players[turnPlayerIndex + 1 == players.Count ? 0 : turnPlayerIndex + 1];
+
+            Debug.Log($"引く{turnPlayer.Name},引かれる{drewPlayer.Name}");
 
             //引かれる側は手札をシャッフル
             var sorting = StartCoroutine(drewPlayer.SoteCardsCoroutine());
@@ -83,6 +85,13 @@ public class GameSequencer : MonoBehaviour {
 
             turnPlayer = nextTurnPlayer;
             turnPlayerIndex = players.FindIndex(x => x == turnPlayer);
+
+            string log = "";
+            foreach(var p in players)
+            {
+                log += $"{p.Name}:{p.HavingCards.Count},";
+            }
+            Debug.Log(log);
         }
 
         Debug.Log("Game Finish");
