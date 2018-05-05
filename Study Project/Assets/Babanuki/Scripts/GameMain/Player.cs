@@ -12,7 +12,24 @@ public class Player{
     /// </summary>
     public void TrashCards()
     {
+        for(int i = 0; i < HavingCards.Count; i++)
+        {
+            if (HavingCards[i] == null) continue;
 
+            for(int j = i+1; j < HavingCards.Count; j++)
+            {
+                if (HavingCards[j] == null) continue;
+
+                if(HavingCards[i].Number == HavingCards[j].Number)
+                {
+                    HavingCards[i] = null;
+                    HavingCards[j] = null;
+                    break;
+                }
+            }
+        }
+
+        HavingCards.RemoveAll(x => x == null);
     }
 
     /// <summary>
