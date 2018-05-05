@@ -8,6 +8,8 @@ public class Player{
     public List<Card> HavingCards { get; private set; } = new List<Card>();
     public string Name { get; set; }
     
+
+
     /// <summary>
     /// 数字一致のカードを捨てる
     /// </summary>
