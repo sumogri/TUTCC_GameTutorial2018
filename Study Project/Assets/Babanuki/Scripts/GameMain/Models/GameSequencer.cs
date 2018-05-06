@@ -91,6 +91,8 @@ public class GameSequencer : MonoBehaviour {
                 log += $"{p.Name}:{p.HavingCards.Count},";
             }
             Debug.Log(log);
+
+            yield return new WaitForSeconds(1f);
         }
 
         Debug.Log("Game Finish");
