@@ -51,12 +51,11 @@ public class GameSequencer : MonoBehaviour {
             Debug.Log($"引く{turnPlayer.Name},引かれる{drewPlayer.Name}");
 
             //引かれる側は手札をシャッフル
-            var sorting = StartCoroutine(drewPlayer.SoteCardsCoroutine());
-            yield return sorting;
+            yield return drewPlayer.SortCardsCoroutine();
 
             //カードを次の人から引く
-            var dlawing = turnPlayer.DlawCardCoroutine(drewPlayer.HavingCards);
-            yield return dlawing;
+
+            yield return turnPlayer.DlawCardCoroutine(drewPlayer.HavingCards);
 
             turnPlayer.TrashCards();
 

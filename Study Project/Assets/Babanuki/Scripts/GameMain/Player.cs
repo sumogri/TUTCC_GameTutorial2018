@@ -3,12 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UniRx;
 
 public class Player{
     public List<Card> HavingCards { get; private set; } = new List<Card>();
     public string Name { get; set; }
-    
+    PlayerAction action;
 
+    public Player(PlayerAction action)
+    {
+        this.action = action;
+    }
+
+    public Player()
+    {
+        action = new PlayerAction(new RandomSorting(),new ConstDrawing());
+    }
 
     /// <summary>
     /// 数字一致のカードを捨てる
@@ -41,21 +51,20 @@ public class Player{
     /// <param name="drewList">引く対象のリスト</param>
     public IEnumerator DlawCardCoroutine(List<Card> drewList)
     {
-        var c = drewList[0];
-        drewList.RemoveAt(0);
+        yield return action.DrawCoroutine(drewList);
+        var drewNumber = action.DrewIndex;
 
+        var c = drewList[drewNumber];
+        drewList.RemoveAt(drewNumber);
         HavingCards.Add(c);
-
-        yield return new WaitForSeconds(1f);
     }
 
     /// <summary>
     /// 手札をシャッフルする
     /// </summary>
-    public IEnumerator SoteCardsCoroutine()
+    public IEnumerator SortCardsCoroutine()
     {
-        HavingCards = HavingCards.OrderBy(x => Guid.NewGuid()).ToList();
-
-        yield return new WaitForSeconds(1f);
+        yield return action.SortCoroutine(HavingCards);
+        HavingCards = action.SortedHand;
     }
 }
