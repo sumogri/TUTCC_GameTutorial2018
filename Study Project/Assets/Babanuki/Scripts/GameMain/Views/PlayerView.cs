@@ -18,6 +18,21 @@ public class PlayerView : MonoBehaviour {
         cardLayoutGroupOriginSpacing = cardLayoutGroup.spacing;        
     }
     
+    public void GenerateCard()
+    {
+
+    }
+
+    public void TrashCard()
+    {
+
+    }
+
+    public void PullCard(GameObject card)
+    {
+
+    }
+
     public void MoveToChose()
     {
         StartCoroutine(HandMoveCoroutien(ViewManager.I.ChoseLayoutPosition, 0f, 1f));

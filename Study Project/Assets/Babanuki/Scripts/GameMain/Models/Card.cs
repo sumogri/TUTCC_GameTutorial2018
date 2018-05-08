@@ -20,5 +20,5 @@ public class Card {
     }
 }
 
-public enum Suit { Spade,Heart,Diamond,Clover,Joker }
+public enum Suit { Clover, Diamond, Heart, Spade, Joker }
 
