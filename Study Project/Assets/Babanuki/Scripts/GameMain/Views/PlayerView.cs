@@ -1,36 +1,41 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
 
 public class PlayerView : MonoBehaviour {
     [SerializeField] private GameObject cardLayout;
     [SerializeField] private Text nameText;
     [SerializeField] private Text handCountText;
+    [SerializeField] private BoolReactiveProperty isOpneCard;
     private HorizontalLayoutGroup cardLayoutGroup;
     private Vector3 cardLayoutOriginPos;
     private float cardLayoutGroupOriginSpacing;
+    public Player Model { get; set; }
 
     // Use this for initialization
     void Start() {
         cardLayoutGroup = cardLayout.GetComponent<HorizontalLayoutGroup>();
         cardLayoutOriginPos = cardLayout.transform.position;
-        cardLayoutGroupOriginSpacing = cardLayoutGroup.spacing;        
+        cardLayoutGroupOriginSpacing = cardLayoutGroup.spacing;
+        isOpneCard.Where(x => x == true).Subscribe(x => OpenCard() );
     }
     
-    public void GenerateCard()
+    public void GenerateHandCardView()
     {
-
+        var obj = Instantiate(ViewManager.I.CardPrefab,cardLayout.transform);
     }
 
     public void TrashCard()
     {
-
+        
     }
 
     public void PullCard(GameObject card)
     {
-
+        
     }
 
     public void MoveToChose()
@@ -59,4 +64,8 @@ public class PlayerView : MonoBehaviour {
         cardLayoutGroup.spacing = toSpacing;
     }
 
+    private void OpenCard()
+    {
+
+    }
 }

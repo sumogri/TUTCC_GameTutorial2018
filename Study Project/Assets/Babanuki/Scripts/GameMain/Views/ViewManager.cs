@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class ViewManager : SingletonMonoBehaviour<ViewManager> {
     [SerializeField] private Transform choseLayoutPos;
+    public Vector3 ChoseLayoutPosition { get { return choseLayoutPos.position; } }
     [SerializeField] private GameObject cardPrefab;
-    public Vector3 ChoseLayoutPosition{ get { return choseLayoutPos.position; } }
+    public GameObject CardPrefab { get { return cardPrefab; } }
     public List<Sprite> TrumpSprites { get; private set; } = new List<Sprite>();
+    public Sprite TrumpBack { get; private set; }
     private const string spritesPass = "Textures/trump/png/";
 
     private void Awake()
@@ -20,5 +22,6 @@ public class ViewManager : SingletonMonoBehaviour<ViewManager> {
             }
         }
         TrumpSprites.Add(Resources.Load<Sprite>($"{spritesPass}x01"));
+        TrumpBack = Resources.Load<Sprite>($"{spritesPass}");
     }
 }

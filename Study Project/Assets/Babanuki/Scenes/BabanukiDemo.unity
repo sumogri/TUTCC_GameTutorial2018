@@ -1264,7 +1264,6 @@ GameObject:
   m_Component:
   - component: {fileID: 872082803}
   - component: {fileID: 872082804}
-  - component: {fileID: 872082805}
   m_Layer: 5
   m_Name: PlayerView
   m_TagString: Untagged
@@ -1307,17 +1306,6 @@ MonoBehaviour:
   cardLayout: {fileID: 1708585423}
   nameText: {fileID: 1746686504}
   handCountText: {fileID: 1482234776}
---- !u!114 &872082805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 872082802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c55f1ec40847364cad5d426f368e380, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &914139560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,7 +1977,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1153442520}
   - component: {fileID: 1153442521}
-  - component: {fileID: 1153442522}
   m_Layer: 5
   m_Name: PlayerView (2)
   m_TagString: Untagged
@@ -2032,17 +2019,6 @@ MonoBehaviour:
   cardLayout: {fileID: 548732019}
   nameText: {fileID: 1935028262}
   handCountText: {fileID: 1486230184}
---- !u!114 &1153442522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1153442519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c55f1ec40847364cad5d426f368e380, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1174796115
 GameObject:
   m_ObjectHideFlags: 0
@@ -2676,7 +2652,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1428454392}
   - component: {fileID: 1428454393}
-  - component: {fileID: 1428454394}
   m_Layer: 5
   m_Name: PlayerView (3)
   m_TagString: Untagged
@@ -2719,17 +2694,6 @@ MonoBehaviour:
   cardLayout: {fileID: 1961369976}
   nameText: {fileID: 1397422147}
   handCountText: {fileID: 1894968988}
---- !u!114 &1428454394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1428454391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c55f1ec40847364cad5d426f368e380, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1445117105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3146,7 +3110,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1714470157}
   - component: {fileID: 1714470158}
-  - component: {fileID: 1714470159}
   m_Layer: 5
   m_Name: PlayerView (1)
   m_TagString: Untagged
@@ -3189,17 +3152,6 @@ MonoBehaviour:
   cardLayout: {fileID: 1445117105}
   nameText: {fileID: 1309824829}
   handCountText: {fileID: 1188257703}
---- !u!114 &1714470159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1714470156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c55f1ec40847364cad5d426f368e380, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1736605300
 GameObject:
   m_ObjectHideFlags: 0

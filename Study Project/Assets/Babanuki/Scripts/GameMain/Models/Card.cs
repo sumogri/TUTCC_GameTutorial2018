@@ -18,6 +18,11 @@ public class Card {
         Number = id % maxNumber + 1;
         Suit = (Suit)(id / maxNumber);
     }
+
+    static int ToId(int number,Suit suit)
+    {
+        return number + (int)suit * 13;
+    }
 }
 
 public enum Suit { Clover, Diamond, Heart, Spade, Joker }

@@ -56,7 +56,6 @@ public class GameSequencer : MonoBehaviour {
             yield return drewPlayer.SortCardsCoroutine();
 
             //カードを次の人から引く
-
             yield return turnPlayer.DlawCardCoroutine(drewPlayer.HavingCards);
 
             turnPlayer.TrashCards();
