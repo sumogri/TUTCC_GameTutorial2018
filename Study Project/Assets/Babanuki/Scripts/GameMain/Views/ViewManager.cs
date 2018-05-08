@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class ViewManager : SingletonMonoBehaviour<ViewManager> {
     [SerializeField] private Transform choseLayoutPos;
-    public Transform ChoseLayoutPosition{ get { return choseLayoutPos; } }
+    public Vector3 ChoseLayoutPosition{ get { return choseLayoutPos.position; } }
 
 }

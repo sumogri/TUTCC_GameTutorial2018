@@ -10,6 +10,7 @@ public class GameSequencer : MonoBehaviour {
     private List<Player> players = new List<Player>();
 
 	// Use this for initialization
+    /*
 	void Start () {
         //プレイヤーの生成
         for (int i = 0; i < 4; i++)
@@ -22,7 +23,8 @@ public class GameSequencer : MonoBehaviour {
 
         StartCoroutine(GameCoroutine());
 	}
-	
+	*/
+
     private IEnumerator GameCoroutine()
     {
         //席順 == listの格納順
