@@ -9,7 +9,7 @@ public class RandomSorting : ISorting
 
     public IEnumerator SortCoroutine(List<Card> cards)
     {
-        HandOrder = cards.Select(x => Random.Range(0,100)).ToList();
+        HandOrder = Enumerable.Range(0,cards.Count).OrderBy(x => Random.Range(0,100)).ToList();
         yield return null;
     }
 }
