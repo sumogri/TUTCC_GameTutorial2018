@@ -65,6 +65,7 @@ public class Player{
     public IEnumerator SortCardsCoroutine()
     {
         yield return action.SortCoroutine(HavingCards);
-        HavingCards = action.SortedHand;
+        var orderItr = action.HandOrder.GetEnumerator();
+        HavingCards = HavingCards.OrderBy(x => orderItr.Current).ToList();
     }
 }

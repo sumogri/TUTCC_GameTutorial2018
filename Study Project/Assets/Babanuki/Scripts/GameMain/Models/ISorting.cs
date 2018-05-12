@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface ISorting{
-    List<Card> SortedHand { get; }
+    List<int> HandOrder { get; }
     /// <summary>
     /// 手札の順列を入れ替えるアルゴリズム
     /// </summary>

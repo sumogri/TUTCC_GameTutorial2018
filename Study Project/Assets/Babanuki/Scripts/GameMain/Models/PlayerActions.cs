@@ -16,11 +16,11 @@ public class PlayerAction{
     {
         return sorting.SortCoroutine(cards);
     }
-    public List<Card> SortedHand
+    public List<int> HandOrder
     {
         get
         {
-            return sorting.SortedHand;
+            return sorting.HandOrder;
         }
     }
 
