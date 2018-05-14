@@ -7,23 +7,26 @@ using UnityEngine;
 /// ゲームの流れを管理するクラス
 /// </summary>
 public class GameSequencer : MonoBehaviour {
+    [SerializeField] private PlayerView[] playerViews;
     private List<Player> players = new List<Player>();
 
-	// Use this for initialization
-    /*
-	void Start () {
+    // Use this for initialization
+    void Start () {
         //プレイヤーの生成
         for (int i = 0; i < 4; i++)
+        {
             players.Add(new Player());
+            players[i].View = playerViews[i];
+            playerViews[i].Model = players[i];
+        }
 
-        players[0].Name = "一色";
-        players[1].Name = "二葉";
-        players[2].Name = "三条";
-        players[3].Name = "四宮";
-
+        players[0].Name.Value = "一色";
+        players[1].Name.Value = "二葉";
+        players[2].Name.Value = "三条";
+        players[3].Name.Value = "四宮";
+        
         StartCoroutine(GameCoroutine());
 	}
-	*/
 
     private IEnumerator GameCoroutine()
     {
@@ -34,7 +37,9 @@ public class GameSequencer : MonoBehaviour {
         Card[] cards = CardFactory.GenerateDeck();
         for (int i = 0; i < cards.Length; i++)
         {
-            players[(i+turnPlayerIndex) % players.Count].HavingCards.Add(cards[i]);
+            var p = players[(i + turnPlayerIndex) % players.Count];
+            p.HavingCards.Add(cards[i]);
+            p.View.GenerateHandCard(cards[i]);
         }
 
         foreach (var p in players)
@@ -55,10 +60,15 @@ public class GameSequencer : MonoBehaviour {
             //引かれる側は手札をシャッフル
             yield return drewPlayer.SortCardsCoroutine();
 
+            yield return new WaitForSeconds(1f);
+
             //カードを次の人から引く
-            yield return turnPlayer.DlawCardCoroutine(drewPlayer.HavingCards);
+            yield return turnPlayer.DlawCardCoroutine(drewPlayer);
+
+            yield return new WaitForSeconds(1f);
 
             turnPlayer.TrashCards();
+
 
             //勝ち状況を確認
             bool isWonTurnP = PlayerWon(turnPlayer);

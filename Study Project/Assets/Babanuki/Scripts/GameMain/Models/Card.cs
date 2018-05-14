@@ -19,9 +19,20 @@ public class Card {
         Suit = (Suit)(id / maxNumber);
     }
 
-    static int ToId(int number,Suit suit)
+    public override string ToString()
     {
-        return number + (int)suit * 13;
+        return $"Card{Suit}{Number}";
+    }
+
+    public static int ToId(int number,Suit suit)
+    {
+        return number-1 + (int)suit * 13;
+    }
+
+    public static int ToId(Card card)
+    {
+        if (card.Suit == Suit.Joker) return 52;
+        return card.Number-1 + (int)card.Suit * 13;
     }
 }
 

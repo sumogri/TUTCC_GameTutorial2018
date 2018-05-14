@@ -9,11 +9,19 @@ public class PlayerView : MonoBehaviour {
     [SerializeField] private GameObject cardLayout;
     [SerializeField] private Text nameText;
     [SerializeField] private Text handCountText;
-    [SerializeField] private BoolReactiveProperty isOpneCard;
+    [SerializeField] private BoolReactiveProperty isOpneCard;    
     private HorizontalLayoutGroup cardLayoutGroup;
     private Vector3 cardLayoutOriginPos;
     private float cardLayoutGroupOriginSpacing;
-    public Player Model { get; set; }
+    private List<GameObject> handCardObjects = new List<GameObject>();
+    private Player model;
+    public Player Model {
+        get { return model; }
+        set {
+            model = value;
+            model.Name.Subscribe(x => nameText.text = x).AddTo(gameObject);
+        }
+    }
 
     // Use this for initialization
     void Start() {
@@ -23,19 +31,30 @@ public class PlayerView : MonoBehaviour {
         isOpneCard.Where(x => x == true).Subscribe(x => OpenCard() );
     }
     
-    public void GenerateHandCardView()
+    public void GenerateHandCard(Card card)
     {
-        var obj = Instantiate(ViewManager.I.CardPrefab,cardLayout.transform);
+        var obj = Instantiate(ViewManager.I.CardPrefab, cardLayout.transform);
+        //obj.GetComponent<Image>().sprite = ViewManager.I.TrumpBack;
+        obj.GetComponent<Image>().sprite = ViewManager.I.TrumpSprites[Card.ToId(card)];
+        handCardObjects.Add(obj);
+        obj.name = card.ToString();
     }
 
-    public void TrashCard()
+    public void TrashCard(Card card)
     {
-        
+        var index = handCardObjects.FindIndex(x => x.name == card.ToString());
+        Destroy(handCardObjects[index]);
+        handCardObjects.RemoveAt(index);
     }
 
-    public void PullCard(GameObject card)
+    public void SortCard(List<int> order)
     {
-        
+        var orderItr = order.GetEnumerator();
+        foreach(var o in handCardObjects)
+        {
+            o.transform.SetSiblingIndex(orderItr.Current);
+            orderItr.MoveNext();
+        }
     }
 
     public void MoveToChose()
