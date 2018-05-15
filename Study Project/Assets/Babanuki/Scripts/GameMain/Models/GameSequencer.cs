@@ -69,7 +69,6 @@ public class GameSequencer : MonoBehaviour {
 
             turnPlayer.TrashCards();
 
-
             //勝ち状況を確認
             bool isWonTurnP = PlayerWon(turnPlayer);
             bool isWonDrewP = PlayerWon(drewPlayer);

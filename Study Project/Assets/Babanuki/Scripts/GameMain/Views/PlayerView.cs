@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
@@ -50,10 +51,16 @@ public class PlayerView : MonoBehaviour {
     public void SortCard(List<int> order)
     {
         var orderItr = order.GetEnumerator();
-        foreach(var o in handCardObjects)
+        handCardObjects = handCardObjects.OrderBy(x =>
         {
-            o.transform.SetSiblingIndex(orderItr.Current);
+            var n = orderItr.Current;
             orderItr.MoveNext();
+            return n;
+        }).ToList();
+
+        for(var i = 0; i < handCardObjects.Count; i++)
+        {
+            handCardObjects[i].transform.SetSiblingIndex(i);
         }
     }
 
